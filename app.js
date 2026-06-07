@@ -13,16 +13,65 @@ document.addEventListener('DOMContentLoaded', () => {
         }, 1000);
     }
 
-    // --- 2. SESSION MOCK (Dynamic Content) ---
-    // Just display a random session ID for visual testing, no actual auth required
-    let sessionToken = localStorage.getItem('mock_session_id');
-    if (!sessionToken) {
-        sessionToken = 'sess_' + Math.random().toString(36).substr(2, 9);
-        localStorage.setItem('mock_session_id', sessionToken);
-    }
+    // --- 2. AUTH & SESSION MANAGEMENT ---
+    const sessionToken = localStorage.getItem('mock_session_id');
+    const isLoginPage = window.location.pathname.includes('login.html');
+
+    // Display session ID if logged in
     const sessionBadges = document.querySelectorAll('.session-badge');
     if (sessionToken) {
         sessionBadges.forEach(badge => badge.textContent = `Session: ${sessionToken}`);
+    }
+
+    if (!sessionToken && !isLoginPage) {
+        // Redirect to login if not authenticated
+        window.location.href = 'login.html';
+        return;
+    }
+
+    if (sessionToken && isLoginPage) {
+        // Redirect away from login if already authenticated
+        window.location.href = 'index.html';
+        return;
+    }
+
+    // Handle Login Form Submission
+    const loginForm = document.getElementById('mock-login-form');
+    if (loginForm) {
+        loginForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const email = document.getElementById('email').value.trim();
+            const password = document.getElementById('password').value.trim();
+
+            const errorEl = document.getElementById('login-error');
+            errorEl.style.display = 'none';
+
+            // Hardcoded Demo Credentials
+            if (email !== 'n.akshaikumar@gmail.com' || password !== 'Batman@1969') {
+                errorEl.style.display = 'block';
+                return;
+            }
+
+            // Generate a random dynamic session ID
+            const randomSessionId = 'sess_' + Math.random().toString(36).substr(2, 9);
+            localStorage.setItem('mock_session_id', randomSessionId);
+            // Simulate network delay
+            const btn = loginForm.querySelector('button');
+            btn.textContent = 'Authenticating...';
+            setTimeout(() => {
+                window.location.href = 'index.html';
+            }, 800);
+        });
+    }
+
+    // Handle Logout
+    const logoutBtn = document.getElementById('logout-btn');
+    if (logoutBtn) {
+        logoutBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            localStorage.removeItem('mock_session_id');
+            window.location.href = 'login.html';
+        });
     }
 
     // --- 3. LOADING STATES (Dynamic Content) ---

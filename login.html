@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Nexus Store</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <a href="login.html" class="logo">Nexus Store</a>
+    </header>
+
+    <main>
+        <div class="login-container" id="login-container">
+            <h1>Sign In</h1>
+            <div id="login-error" style="color: var(--error); text-align: center; margin-bottom: 1rem; display: none;">Invalid credentials</div>
+            <form id="mock-login-form">
+                <div class="input-group">
+                    <label for="email">Email Address</label>
+                    <input type="email" id="email" required placeholder="name@company.com">
+                </div>
+                <div class="input-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" required placeholder="••••••••">
+                </div>
+                <button type="submit" class="btn">Sign In</button>
+            </form>
+            <p style="text-align: center; margin-top: 1rem; color: var(--text-muted); font-size: 0.875rem;">Demo Credentials required to access the testbed.</p>
+        </div>
+    </main>
+
+    <footer>
+        <p>Nexus Store Testbed • System Time: <span class="dynamic-clock">Loading...</span></p>
+    </footer>
+
+    <script src="app.js"></script>
+</body>
+</html>

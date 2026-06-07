@@ -59,18 +59,21 @@ document.addEventListener('DOMContentLoaded', () => {
     if (signupForm) {
         signupForm.addEventListener('submit', (e) => {
             e.preventDefault();
-            const email = document.getElementById('signup-email').value;
-            const password = document.getElementById('signup-password').value;
+            const email = document.getElementById('signup-email').value.trim().toLowerCase();
+            const password = document.getElementById('signup-password').value.trim();
             
+            const errorEl = document.getElementById('signup-error');
+            errorEl.style.display = 'none';
+
             let users = JSON.parse(localStorage.getItem('mock_users') || '{}');
             if (users[email]) {
-                const errorEl = document.getElementById('signup-error');
                 errorEl.style.display = 'block';
                 return;
             }
 
-            // Register user
-            users[email] = { password };
+            // Register user (using btoa to avoid storing plaintext passwords)
+            const hashedPassword = btoa(password);
+            users[email] = { password: hashedPassword };
             localStorage.setItem('mock_users', JSON.stringify(users));
 
             // Log them in immediately
@@ -90,13 +93,16 @@ document.addEventListener('DOMContentLoaded', () => {
     if (loginForm) {
         loginForm.addEventListener('submit', (e) => {
             e.preventDefault();
-            const email = document.getElementById('email').value;
-            const password = document.getElementById('password').value;
+            const email = document.getElementById('email').value.trim().toLowerCase();
+            const password = document.getElementById('password').value.trim();
+
+            const errorEl = document.getElementById('login-error');
+            errorEl.style.display = 'none';
 
             let users = JSON.parse(localStorage.getItem('mock_users') || '{}');
+            const hashedPassword = btoa(password);
 
-            if (!users[email] || users[email].password !== password) {
-                const errorEl = document.getElementById('login-error');
+            if (!users[email] || users[email].password !== hashedPassword) {
                 errorEl.style.display = 'block';
                 return;
             }

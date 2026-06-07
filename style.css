@@ -4,7 +4,7 @@
   --bg-color: #f9fafb;
   --card-bg: #ffffff;
   --text-main: #111827;
-  --text-muted: #f9fafb;
+  --text-muted: #6b7280;
   --border-color: #e5e7eb;
   --error: #ef4444;
 }
@@ -142,7 +142,7 @@ input:focus {
 .product-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-  gap: 2rem;
+  gap: 0px;
   margin-top: 2rem;
 }
 

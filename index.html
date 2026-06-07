@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Storefront - Nexus Store</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div id="loading-state">
+        <div class="spinner"></div>
+    </div>
+
+    <header>
+        <a href="index.html" class="logo">Nexus Store</a>
+        <nav>
+            <a href="index.html" class="active">Home</a>
+            <a href="sale.html">Sale</a>
+            <a href="cart.html">Cart</a>
+            <button id="logout-btn" class="btn" style="padding: 0.5rem 1rem;">Logout</button>
+        </nav>
+    </header>
+
+    <div style="background: var(--primary); color: white; text-align: center; padding: 0.75rem; font-weight: bold; font-size: 0.875rem;"
+        id="rotating-banner">
+        Loading deals...
+    </div>
+
+    <main>
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 2rem;">
+            <h1>Featured Products</h1>
+            <span class="session-badge">Session: Loading...</span>
+        </div>
+
+        <div class="product-grid">
+            <a href="sale.html" class="product-card">
+                <img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?q=80&w=400&auto=format&fit=crop"
+                    alt="Headphones" class="product-img">
+                <div class="product-info">
+                    <h3>Premium Noise-Cancelling Headphones</h3>
+                    <p style="color: var(--text-muted); font-size: 0.875rem;">Immersive audio experience.</p>
+                    <div class="product-price">$299.00</div>
+                </div>
+            </a>
+            <a href="sale.html" class="product-card">
+                <img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?q=80&w=400&auto=format&fit=crop"
+                    alt="Smartwatch" class="product-img">
+                <div class="product-info">
+                    <h3>Pro Smartwatch Series 8</h3>
+                    <p style="color: var(--text-muted); font-size: 0.875rem;">Track your fitness and life.</p>
+                    <div class="product-price">$399.00</div>
+                </div>
+            </a>
+            <a href="sale.html" class="product-card">
+                <img src="https://images.unsplash.com/photo-1583394838336-acd977736f90?q=80&w=400&auto=format&fit=crop"
+                    alt="Earbuds" class="product-img">
+                <div class="product-info">
+                    <h3>Wireless Earbuds Pro</h3>
+                    <p style="color: var(--text-muted); font-size: 0.875rem;">Compact and powerful.</p>
+                    <div class="product-price">$149.00</div>
+                </div>
+            </a>
+            <a href="sale.html" class="product-card">
+                <img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?q=80&w=400&auto=format&fit=crop"
+                    alt="Shoes" class="product-img">
+                <div class="product-info">
+                    <h3>Running Shoes Max</h3>
+                    <p style="color: var(--text-muted); font-size: 0.875rem;">Lightweight comfort.</p>
+                    <div class="product-price">$129.00</div>
+                </div>
+            </a>
+            <a href="sale.html" class="product-card">
+                <img src="https://images.unsplash.com/photo-1526170375885-4d8ecf77b99f?q=80&w=400&auto=format&fit=crop"
+                    alt="Camera" class="product-img">
+                <div class="product-info">
+                    <h3>Retro Digital Camera</h3>
+                    <p style="color: var(--text-muted); font-size: 0.875rem;">Capture memories beautifully.</p>
+                    <div class="product-price">$499.00</div>
+                </div>
+            </a>
+            <a href="sale.html" class="product-card">
+                <img src="https://images.unsplash.com/photo-1491553895911-0055eca6402d?q=80&w=400&auto=format&fit=crop"
+                    alt="Sneakers" class="product-img">
+                <div class="product-info">
+                    <h3>Classic Sneakers</h3>
+                    <p style="color: var(--text-muted); font-size: 0.875rem;">Everyday style.</p>
+                    <div class="product-price">$89.00</div>
+                </div>
+            </a>
+            <a href="sale.html" class="product-card">
+                <img src="https://images.unsplash.com/photo-1527443154391-507e9dc6c5cc?q=80&w=400&auto=format&fit=crop"
+                    alt="Backpack" class="product-img">
+                <div class="product-info">
+                    <h3>Travel Backpack</h3>
+                    <p style="color: var(--text-muted); font-size: 0.875rem;">Durable and spacious.</p>
+                    <div class="product-price">$79.00</div>
+                </div>
+            </a>
+            <a href="sale.html" class="product-card">
+                <img src="https://keychron.in/wp-content/uploads/2023/02/Keychron-K2-Pro-QMK-VIA-Wireless-Mechanical-Keyboard-for-Mac-Windows-PBT-keycaps-PCB-screw-in-stabilizer-hot-swappable-blue-switch_6c0d9b34-bd4d-4664-89f3-52ed9ec34cd8.jpg"
+                    alt="Keyboard" class="product-img">
+                <div class="product-info">
+                    <h3>Mechanical Keyboard</h3>
+                    <p style="color: var(--text-muted); font-size: 0.875rem;">Tactile feedback.</p>
+                    <div class="product-price">$159.00</div>
+                </div>
+            </a>
+            <a href="sale.html" class="product-card">
+                <img src="https://images.unsplash.com/photo-1606220588913-b3aacb4d2f46?q=80&w=400&auto=format&fit=crop"
+                    alt="Mouse" class="product-img">
+                <div class="product-info">
+                    <h3>Wireless Mouse</h3>
+                    <p style="color: var(--text-muted); font-size: 0.875rem;">Ergonomic design.</p>
+                    <div class="product-price">$49.00</div>
+                </div>
+            </a>
+            <a href="sale.html" class="product-card">
+                <img src="https://images.unsplash.com/photo-1546868871-7041f2a55e12?q=80&w=400&auto=format&fit=crop"
+                    alt="Watch" class="product-img">
+                <div class="product-info">
+                    <h3>Classic Watch</h3>
+                    <p style="color: var(--text-muted); font-size: 0.875rem;">Timeless elegance.</p>
+                    <div class="product-price">$249.00</div>
+                </div>
+            </a>
+            <a href="sale.html" class="product-card">
+                <img src="https://images.unsplash.com/photo-1507646227500-4d389b0012be?q=80&w=400&auto=format&fit=crop"
+                    alt="Speaker" class="product-img">
+                <div class="product-info">
+                    <h3>Bluetooth Speaker</h3>
+                    <p style="color: var(--text-muted); font-size: 0.875rem;">Portable sound.</p>
+                    <div class="product-price">$99.00</div>
+                </div>
+            </a>
+            <a href="sale.html" class="product-card">
+                <img src="https://images.unsplash.com/photo-1585386959984-a4155224a1ad?q=80&w=400&auto=format&fit=crop"
+                    alt="Perfume" class="product-img">
+                <div class="product-info">
+                    <h3>Luxury Perfume</h3>
+                    <p style="color: var(--text-muted); font-size: 0.875rem;">Signature scent.</p>
+                    <div class="product-price">$120.00</div>
+                </div>
+            </a>
+        </div>
+    </main>
+
+    <footer>
+        <p>Nexus Store Testbed • System Time: <span class="dynamic-clock">Loading...</span></p>
+    </footer>
+
+    <script src="app.js"></script>
+</body>
+
+</html>

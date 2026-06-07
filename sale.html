@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flash Sale - Nexus Store</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <a href="index.html" class="logo">Nexus Store</a>
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="sale.html" class="active">Sale</a>
+            <a href="cart.html">Cart</a>
+            <button id="logout-btn" class="btn" style="padding: 0.5rem 1rem;">Logout</button>
+        </nav>
+    </header>
+
+    <main>
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 2rem;">
+            <h1>Flash Sale (Ends Soon)</h1>
+            <span class="session-badge">Session: Loading...</span>
+        </div>
+        
+        <div style="text-align: center; margin-bottom: 2rem;">
+            <span id="dynamic-viewers" class="dynamic-tag">Loading viewers...</span>
+        </div>
+
+        <div class="product-grid">
+            <a href="cart.html" class="product-card">
+                <img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?q=80&w=400&auto=format&fit=crop" alt="Headphones" class="product-img">
+                <div class="product-info">
+                    <h3>Premium Noise-Cancelling Headphones</h3>
+                    <div class="product-price" style="color: var(--error);"><del style="color: var(--text-muted); font-size: 1rem; margin-right: 0.5rem;">$399.00</del>$299.00</div>
+                </div>
+            </a>
+            <a href="cart.html" class="product-card">
+                <img src="https://images.unsplash.com/photo-1546868871-7041f2a55e12?q=80&w=400&auto=format&fit=crop" alt="Watch" class="product-img">
+                <div class="product-info">
+                    <h3>Classic Watch</h3>
+                    <div class="product-price" style="color: var(--error);"><del style="color: var(--text-muted); font-size: 1rem; margin-right: 0.5rem;">$349.00</del>$249.00</div>
+                </div>
+            </a>
+        </div>
+    </main>
+
+    <footer>
+        <p>Nexus Store Testbed • System Time: <span class="dynamic-clock">Loading...</span></p>
+    </footer>
+
+    <script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shopping Cart - Nexus Store</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <a href="index.html" class="logo">Nexus Store</a>
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="sale.html">Sale</a>
+            <a href="cart.html" class="active">Cart</a>
+            <button id="logout-btn" class="btn" style="padding: 0.5rem 1rem;">Logout</button>
+        </nav>
+    </header>
+
+    <main>
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 2rem;">
+            <h1>Your Shopping Cart</h1>
+            <span class="session-badge">Session: Loading...</span>
+        </div>
+
+        <div class="cart-list">
+            <div class="cart-item">
+                <div style="display: flex; gap: 1.5rem; align-items: center;">
+                    <img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?q=80&w=150&auto=format&fit=crop" alt="Headphones" style="width: 80px; height: 80px; object-fit: cover; border-radius: 8px;">
+                    <div>
+                        <h3 style="margin-bottom: 0.25rem;">Premium Noise-Cancelling Headphones</h3>
+                        <p style="color: var(--text-muted); font-size: 0.875rem;">Qty: 1</p>
+                    </div>
+                </div>
+                <div style="font-weight: bold; font-size: 1.25rem;">$299.00</div>
+            </div>
+            
+            <div class="cart-item" style="background: #f9fafb;">
+                <div style="width: 100%; display: flex; justify-content: space-between; align-items: center;">
+                    <span style="font-weight: 600; font-size: 1.25rem;">Total</span>
+                    <span style="font-weight: 800; font-size: 1.5rem; color: var(--secondary);">$299.00</span>
+                </div>
+            </div>
+        </div>
+
+        <div id="dynamic-delivery" class="delivery-estimate">
+            Loading delivery estimate...
+        </div>
+
+        <div style="text-align: right; margin-top: 2rem;">
+            <button class="btn" style="padding: 1rem 3rem; font-size: 1.1rem;">Proceed to Checkout</button>
+        </div>
+    </main>
+
+    <footer>
+        <p>Nexus Store Testbed • System Time: <span class="dynamic-clock">Loading...</span></p>
+    </footer>
+
+    <script src="app.js"></script>
+</body>
+</html>

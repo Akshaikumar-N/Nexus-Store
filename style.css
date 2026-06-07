@@ -31,7 +31,7 @@ header {
   border-bottom: 1px solid var(--border-color);
   padding: 1rem 2rem;
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-end;
   align-items: center;
   position: sticky;
   top: 0;
@@ -126,7 +126,7 @@ input:focus {
   color: white;
   border: none;
   padding: 0.75rem 1.5rem;
-  border-radius: 6px;
+  border-radius: 50% 0%;
   font-size: 1rem;
   font-weight: 600;
   cursor: pointer;
@@ -142,7 +142,7 @@ input:focus {
 .product-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-  gap: 2rem;
+  gap: 0px;
   margin-top: 2rem;
 }
 
@@ -174,7 +174,7 @@ input:focus {
 
 .product-price {
   font-weight: 700;
-  font-size: 1.25rem;
+  font-size: 10px;
   margin-top: 0.5rem;
 }
 

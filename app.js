@@ -13,127 +13,16 @@ document.addEventListener('DOMContentLoaded', () => {
         }, 1000);
     }
 
-    // --- 2. AUTH & SESSION MANAGEMENT ---
-    const sessionToken = localStorage.getItem('mock_session_id');
-    const isLoginPage = window.location.pathname.includes('login.html');
-
-    // Display session ID if logged in
+    // --- 2. SESSION MOCK (Dynamic Content) ---
+    // Just display a random session ID for visual testing, no actual auth required
+    let sessionToken = localStorage.getItem('mock_session_id');
+    if (!sessionToken) {
+        sessionToken = 'sess_' + Math.random().toString(36).substr(2, 9);
+        localStorage.setItem('mock_session_id', sessionToken);
+    }
     const sessionBadges = document.querySelectorAll('.session-badge');
     if (sessionToken) {
         sessionBadges.forEach(badge => badge.textContent = `Session: ${sessionToken}`);
-    }
-
-    if (!sessionToken && !isLoginPage) {
-        // Redirect to login if not authenticated
-        window.location.href = 'login.html';
-        return;
-    }
-
-    if (sessionToken && isLoginPage) {
-        // Redirect away from login if already authenticated
-        window.location.href = 'index.html';
-        return;
-    }
-
-    // Toggle Login/Signup
-    const showSignup = document.getElementById('show-signup');
-    const showLogin = document.getElementById('show-login');
-    const loginContainer = document.getElementById('login-container');
-    const signupContainer = document.getElementById('signup-container');
-
-    if (showSignup && showLogin) {
-        showSignup.addEventListener('click', (e) => {
-            e.preventDefault();
-            loginContainer.style.display = 'none';
-            signupContainer.style.display = 'block';
-        });
-        showLogin.addEventListener('click', (e) => {
-            e.preventDefault();
-            signupContainer.style.display = 'none';
-            loginContainer.style.display = 'block';
-        });
-    }
-
-    // Handle Sign Up
-    const signupForm = document.getElementById('mock-signup-form');
-    if (signupForm) {
-        signupForm.addEventListener('submit', (e) => {
-            e.preventDefault();
-            const email = document.getElementById('signup-email').value.trim().toLowerCase();
-            const password = document.getElementById('signup-password').value.trim();
-            
-            const errorEl = document.getElementById('signup-error');
-            errorEl.style.display = 'none';
-
-            let users = JSON.parse(localStorage.getItem('mock_users') || '{}');
-            if (users[email]) {
-                errorEl.style.display = 'block';
-                return;
-            }
-
-            // Register user (using btoa to avoid storing plaintext passwords)
-            const hashedPassword = btoa(password);
-            users[email] = { password: hashedPassword };
-            localStorage.setItem('mock_users', JSON.stringify(users));
-
-            // Log them in immediately
-            const randomSessionId = 'sess_' + Math.random().toString(36).substr(2, 9);
-            localStorage.setItem('mock_session_id', randomSessionId);
-            
-            const btn = signupForm.querySelector('button');
-            btn.textContent = 'Creating account...';
-            setTimeout(() => {
-                window.location.href = 'index.html';
-            }, 800);
-        });
-    }
-
-    // Handle Login Form Submission
-    const loginForm = document.getElementById('mock-login-form');
-    if (loginForm) {
-        loginForm.addEventListener('submit', (e) => {
-            e.preventDefault();
-            const email = document.getElementById('email').value.trim().toLowerCase();
-            const password = document.getElementById('password').value.trim();
-
-            const errorEl = document.getElementById('login-error');
-            errorEl.style.display = 'none';
-
-            let users = JSON.parse(localStorage.getItem('mock_users') || '{}');
-            const hashedPassword = btoa(password);
-
-            // Allow login if it matches the new hashed password OR the legacy plaintext password
-            if (!users[email] || (users[email].password !== hashedPassword && users[email].password !== password)) {
-                errorEl.style.display = 'block';
-                return;
-            }
-
-            // Auto-migrate legacy plaintext passwords to hashed passwords on successful login
-            if (users[email].password === password && password !== hashedPassword) {
-                users[email].password = hashedPassword;
-                localStorage.setItem('mock_users', JSON.stringify(users));
-            }
-
-            // Generate a random dynamic session ID
-            const randomSessionId = 'sess_' + Math.random().toString(36).substr(2, 9);
-            localStorage.setItem('mock_session_id', randomSessionId);
-            // Simulate network delay
-            const btn = loginForm.querySelector('button');
-            btn.textContent = 'Authenticating...';
-            setTimeout(() => {
-                window.location.href = 'index.html';
-            }, 800);
-        });
-    }
-
-    // Handle Logout
-    const logoutBtn = document.getElementById('logout-btn');
-    if (logoutBtn) {
-        logoutBtn.addEventListener('click', (e) => {
-            e.preventDefault();
-            localStorage.removeItem('mock_session_id');
-            window.location.href = 'login.html';
-        });
     }
 
     // --- 3. LOADING STATES (Dynamic Content) ---

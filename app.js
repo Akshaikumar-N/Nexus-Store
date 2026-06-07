@@ -102,9 +102,16 @@ document.addEventListener('DOMContentLoaded', () => {
             let users = JSON.parse(localStorage.getItem('mock_users') || '{}');
             const hashedPassword = btoa(password);
 
-            if (!users[email] || users[email].password !== hashedPassword) {
+            // Allow login if it matches the new hashed password OR the legacy plaintext password
+            if (!users[email] || (users[email].password !== hashedPassword && users[email].password !== password)) {
                 errorEl.style.display = 'block';
                 return;
+            }
+
+            // Auto-migrate legacy plaintext passwords to hashed passwords on successful login
+            if (users[email].password === password && password !== hashedPassword) {
+                users[email].password = hashedPassword;
+                localStorage.setItem('mock_users', JSON.stringify(users));
             }
 
             // Generate a random dynamic session ID

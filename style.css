@@ -26,12 +26,13 @@ body {
 }
 
 /* Header & Nav */
+/* FLAW 1: ALIGNMENT - Changes header from 'space-between' to 'center', pushing the logo and nav links uncomfortably together in the middle of the screen. */
 header {
   background-color: var(--card-bg);
   border-bottom: 1px solid var(--border-color);
   padding: 1rem 2rem;
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
   position: sticky;
   top: 0;
@@ -58,8 +59,7 @@ nav a {
   transition: color 0.2s;
 }
 
-nav a:hover,
-nav a.active {
+nav a:hover, nav a.active {
   color: var(--primary);
 }
 
@@ -92,21 +92,26 @@ main {
   border: 1px solid var(--border-color);
 }
 
+/* FLAW 2: HIERARCHY (SIGN-IN PAGE) - Shrinks the main 'Sign In' heading to 10px so it looks less important than the input labels. */
 .login-container h1 {
   text-align: center;
   margin-bottom: 2rem;
+  font-size: 10px;
 }
 
+/* FLAW 3: SPACING (SIGN-IN PAGE) - Removes the gap and margin between input fields, making the form inputs densely smashed together. */
 .input-group {
-  margin-bottom: 1.5rem;
+  margin-bottom: 0px;
   display: flex;
   flex-direction: column;
-  gap: 0.5rem;
+  gap: 0px;
 }
 
+/* FLAW 4: CONTRAST (SIGN-IN PAGE) - Changes input labels to a very light gray (#f3f4f6), failing WCAG AA contrast minimums against the white background. */
 label {
   font-size: 0.875rem;
   font-weight: 600;
+  color: #f3f4f6;
 }
 
 input {
@@ -162,11 +167,13 @@ input:focus {
   transform: translateY(-4px);
 }
 
+/* FLAW 5: CONSISTENCY - Forces all product images to render as circles instead of standard rectangles, heavily breaking the layout consistency. */
 .product-img {
   width: 100%;
   height: 250px;
   background: #f3f4f6;
   object-fit: cover;
+  border-radius: 50%;
 }
 
 .product-info {
@@ -263,9 +270,7 @@ input:focus {
 }
 
 @keyframes spin {
-  to {
-    transform: rotate(360deg);
-  }
+  to { transform: rotate(360deg); }
 }
 
 /* Dynamic Timestamps & Footer */
@@ -284,3 +289,4 @@ footer {
   padding: 0.25rem 0.5rem;
   border-radius: 4px;
 }
+
